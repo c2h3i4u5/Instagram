@@ -2,8 +2,6 @@
   <div class="base">
     <the-header></the-header>
     <base-card></base-card>
-    <base-card></base-card>
-    <base-card></base-card>9+
   </div>
 </template>
 
