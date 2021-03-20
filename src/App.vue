@@ -1,15 +1,16 @@
 <template>
   <div class="base">
-    <the-header></the-header>
-    <base-card></base-card>
+    <!-- <main-page></main-page> -->
+    <login-page></login-page>
   </div>
 </template>
 
 <script>
-import theHeader from "./components/header.vue";
+// import mainPage from "./components/mainPage.vue";
+import loginPage from "./components/loginPage.vue";
 
 export default {
-  components: { theHeader },
+  components: { loginPage },
 };
 </script>
 
@@ -18,8 +19,5 @@ export default {
   margin: 0;
   padding: 0;
   font-style: none;
-}
-.base {
-  background-color: rgba(178, 178, 178, 0.135);
 }
 </style>

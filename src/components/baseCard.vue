@@ -34,7 +34,6 @@
       <div class="post_comment">
         <form>
           <input type="text" />
-          <button>Submit</button>
         </form>
       </div>
     </div>
@@ -48,7 +47,7 @@ export default {};
 <style>
 .container {
   height: 800px;
-  background-color: rgba(255, 255, 255, 0.888);
+  background-color: rgba(255, 255, 255);
   border-radius: 1px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 2rem auto;
@@ -66,11 +65,13 @@ export default {};
 }
 .user_img img {
   width: 40px;
+  margin-top: 5px;
   border-radius: 100%;
   /* background-color: ; */
 }
 .user_header p {
   padding-left: 20px;
+  margin-top: 10px;
 }
 .user_setting {
   display: flex;
@@ -79,6 +80,7 @@ export default {};
 .user_setting img {
   width: 25px;
   margin: 10px;
+  margin-left: 450px;
 }
 .main_post img {
   width: 100%;
@@ -89,5 +91,17 @@ export default {};
 .post_action img {
   width: 25px;
   margin: 10px;
+}
+
+.post_save img {
+  margin-left: 460px;
+}
+
+.post_comment input {
+  width: 100%;
+  height: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.091);
+
+  /* border-top: 1px solid gray; */
 }
 </style>

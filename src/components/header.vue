@@ -31,6 +31,14 @@
         <img src="../../source/like.png" />
       </a>
     </div>
+
+    <div class="header_user">
+      <img src="https://picsum.photos/50/50?random=10" />
+    </div>
+
+    <div class="logout">
+      <button>Logout</button>
+    </div>
   </div>
 </template>
 
@@ -46,7 +54,9 @@ export default {};
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.241);
+  position: fixed;
+  top: 0px;
 }
 .title {
   width: 150px;
@@ -56,11 +66,14 @@ export default {};
   margin-top: 10px;
 }
 .search {
-  margin: 20px;
+  margin: 300px;
   border: none;
 }
 .search input {
-  width: 150px;
+  width: 200px;
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.241);
+  border-radius: 5px;
 }
 
 .home img,
@@ -69,5 +82,15 @@ export default {};
 .like img {
   width: 25px;
   margin: 10px;
+}
+
+.header_user img {
+  width: 30px;
+  margin-left: 10px;
+  border-radius: 100%;
+}
+.logout {
+  margin-left: 15px;
+  margin-bottom: 5px;
 }
 </style>
