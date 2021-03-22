@@ -4,13 +4,17 @@
       <img
         src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
       />
-      <input class="account" type="text" />
-      <input class="password" type="password" />
+      <input
+        class="account"
+        placeholder="手機號碼、用戶名稱或電子郵件"
+        type="text"
+      />
+      <input class="password" placeholder="密碼" type="password" />
       <button class="login">Login</button>
 
       <div class="register">
         <p>沒有帳號嗎?</p>
-        <button>註冊</button>
+        <a href="register">註冊</a>
       </div>
     </div>
   </div>
@@ -21,14 +25,12 @@ export default {};
 </script>
 
 <style>
-html,
-body {
-  height: 100%;
-}
-body {
+.loginPage {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: fixed;
+  top: 35%;
 }
 .loginContainer {
   width: 350px;
@@ -37,7 +39,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   background-color: white;
   border: 0.5px solid gray;
 }

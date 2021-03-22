@@ -1,16 +1,17 @@
 <template>
   <div class="base">
     <!-- <main-page></main-page> -->
-    <login-page></login-page>
+    <!-- <login-page></login-page> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 // import mainPage from "./components/mainPage.vue";
-import loginPage from "./components/loginPage.vue";
+// import loginPage from "./components/loginPage.vue";
 
 export default {
-  components: { loginPage },
+  // components: { loginPage },
 };
 </script>
 
