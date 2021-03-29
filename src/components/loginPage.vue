@@ -45,7 +45,7 @@ export default {
   methods: {
     async login() {
       const getAccount = await fetch(
-        "https://instagram-632c9-default-rtdb.firebaseio.com/.json"
+        "https://instagramlogin-278b1-default-rtdb.firebaseio.com/.json"
       );
       const responseData = await getAccount.json();
 
@@ -61,9 +61,8 @@ export default {
             this.userInfo.password === user.passowrd) ||
           this.userInfo.account === user.phoneEmail
         ) {
+          this.$store.commit("getUserInfo", user.userName);
           this.$router.replace("/homepage");
-
-          //123
         }
         // userAccount.push(user);
       }

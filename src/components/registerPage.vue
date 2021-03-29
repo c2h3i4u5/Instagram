@@ -56,7 +56,7 @@ export default {
         password: this.password,
       };
       await fetch(
-        `https://instagram-632c9-default-rtdb.firebaseio.com/${registerData.userName}.json`,
+        `https://instagramlogin-278b1-default-rtdb.firebaseio.com/${registerData.userName}.json`,
         {
           // 待加入帳號是否重複
           method: "PUT",

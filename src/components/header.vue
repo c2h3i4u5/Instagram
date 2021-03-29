@@ -1,20 +1,20 @@
 <template>
   <div class="main-header">
     <div class="title">
-      <a href="#">
+      <router-link to="/homepage">
         <img
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
         />
-      </a>
+      </router-link>
     </div>
     <div class="search">
       <form><input type="text" /></form>
     </div>
 
     <div class="home">
-      <a href="#">
+      <router-link to="/homepage">
         <img src="../../source/home.png" />
-      </a>
+      </router-link>
     </div>
     <div class="message">
       <a href="#">
@@ -37,7 +37,11 @@
     </div>
 
     <div class="logout">
-      <button>Logout</button>
+      <router-link to="/login">
+        <button>
+          Logout
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
