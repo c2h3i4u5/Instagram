@@ -2,12 +2,16 @@ import { createStore } from "vuex";
 
 const store = createStore({
   state: {
-    userID: "",
+    currentUserID: "",
+    allUser: [],
   },
   mutations: {
     getUserInfo(state, payload) {
-      state.userID = payload;
-      console.log(payload);
+      state.currentUserID = payload;
+    },
+    getAllUser(state, payload) {
+      state.allUser = payload;
+      // console.log(payload);
     },
   },
   actions: {},

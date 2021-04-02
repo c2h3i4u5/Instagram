@@ -7,13 +7,13 @@
         </div>
 
         <div class="userSetting">
-          <p>{{ this.$store.state.userID }}</p>
+          <p>{{ userID }}</p>
           <img src="../../source/more.png" />
         </div>
       </div>
 
       <div class="mainPost">
-        <img src="https://picsum.photos/300/300?random=11" />
+        <img :src="userImg" />
       </div>
 
       <div class="postAction">
@@ -34,18 +34,17 @@
       <div class="messageArea">
         <div class="userMessage">
           <p>
-            <b>{{ this.$store.state.userID }}</b> Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Esse et sint illo magnam hic. Natus
-            cupiditate earum, animi tempora reprehenderit similique, vitae quam
-            at rem deleniti nemo ut maiores laborum.
+            <b>{{ userID }}</b> {{ userMessage }}
           </p>
         </div>
         <div class="friendMessage">
           <p>
-            <b>{{ this.$store.state.userID }}</b> test123123123test123123123
+            <b>{{ this.$store.state.currentUserID }}</b>
+            test123123123test123123123
           </p>
           <p>
-            <b>{{ this.$store.state.userID }}</b> test123123123test123123123
+            <b>{{ this.$store.state.currentUserID }}</b>
+            test123123123test123123123
           </p>
         </div>
       </div>
@@ -60,7 +59,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["userID", "userImg", "userMessage"],
+};
 </script>
 
 <style>
@@ -141,6 +142,7 @@ export default {};
 }
 .userMessage p {
   margin-left: 10px;
+  margin-bottom: 30px;
 }
 .friendMessage p {
   margin-top: 10px;

@@ -42,14 +42,14 @@ export default {
       },
     };
   },
+
   methods: {
     async login() {
       const getAccount = await fetch(
         "https://instagramlogin-278b1-default-rtdb.firebaseio.com/.json"
       );
       const responseData = await getAccount.json();
-
-      // const userAccount = [];
+      const userAccount = [];
       for (const num in responseData) {
         const user = {
           userName: responseData[num].userName,
@@ -61,20 +61,15 @@ export default {
             this.userInfo.password === user.passowrd) ||
           this.userInfo.account === user.phoneEmail
         ) {
-          this.$store.commit("getUserInfo", user.userName);
+          this.$store.commit("getUserInfo", user.userName); //get current user
           this.$router.replace("/homepage");
         }
-        // userAccount.push(user);
+        userAccount.push(user);
       }
-
-      // console.log(userAccount);
-
+      this.$store.commit("getAllUser", userAccount);
       this.userInfo.account = "";
       this.userInfo.password = "";
     },
-    // confirmUserLogin(userLogin) {
-    //   console.log(userLogin);
-    // },
   },
 };
 </script>
