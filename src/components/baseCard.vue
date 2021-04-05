@@ -3,7 +3,7 @@
     <div class="container">
       <div class="userHeader">
         <div class="userImg">
-          <img src="https://picsum.photos/50/50?random=10" />
+          <img :src="userImg" />
         </div>
 
         <div class="userSetting">
@@ -13,7 +13,7 @@
       </div>
 
       <div class="mainPost">
-        <img :src="userImg" />
+        <img :src="userPostImg" />
       </div>
 
       <div class="postAction">
@@ -49,8 +49,8 @@
         </div>
       </div>
       <div class="postComment">
-        <form>
-          <input type="text" />
+        <form @submit.prevent="inputMessage">
+          <input type="text" :value="friendMessage" />
           <button>發佈</button>
         </form>
       </div>
@@ -60,7 +60,25 @@
 
 <script>
 export default {
-  props: ["userID", "userImg", "userMessage"],
+  props: ["userID", "userPostImg", "userImg", "userMessage", "numOfPost"],
+  data() {
+    return {
+      friendMessage: null,
+    };
+  },
+  methods: {
+    async inputMessage() {
+      // await fetch(
+      //   `https://instagramlogin-278b1-default-rtdb.firebaseio.com/test05/post/${this.numOfPost}/friendMessage.json`,
+      //   {
+      //     method: "PUT",
+      //     body: JSON.stringify(this.friendMessage),
+      //   }
+      // );
+
+      this.friendMessage = "";
+    },
+  },
 };
 </script>
 
@@ -73,18 +91,21 @@ export default {
   margin: 2rem auto;
   margin-top: 90px;
   max-width: 40rem;
+
   /* background-color: blueviolet; */
 }
 
 .userHeader {
   display: flex;
   align-items: center;
+
   padding: 8px;
 
   border: 1px solid rgba(128, 128, 128, 0.625);
 }
 .userImg img {
   width: 40px;
+  height: 40px;
   margin-top: 5px;
   border-radius: 100%;
   /* background-color: ; */
@@ -100,7 +121,8 @@ export default {
 .userSetting img {
   width: 25px;
   margin: 10px;
-  margin-left: 450px;
+
+  margin-left: 480px;
 }
 .mainPost img {
   width: 100%;
@@ -127,6 +149,7 @@ export default {
 }
 .postComment {
   position: relative;
+  top: 25px;
 }
 .postComment button {
   /* width: 40px; */

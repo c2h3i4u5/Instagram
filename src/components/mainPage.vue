@@ -5,8 +5,10 @@
       v-for="user in allUser"
       :key="user"
       :userID="user.name"
-      :userImg="user.post.image"
+      :userPostImg="user.post.image"
+      :userImg="user.userImg"
       :userMessage="user.post.message"
+      :numOfPost="user.numOfPost"
     ></baseCard>
   </div>
 </template>
@@ -34,22 +36,23 @@ export default {
         let temp = {
           name: getAllUserResult[num].userName,
           post: getAllUserResult[num].post,
+          userImg: getAllUserResult[num].userImg,
         };
         userTemp.push(temp);
       }
     }
     this.allUser = userTemp;
 
-    //把所有貼文一次排開,做成一維陣列,裡面有 image and message
     let userArray = [];
     for (let tempA = 0; tempA < userTemp.length; tempA++) {
       for (let tempB = 0; tempB < userTemp[tempA].post.length; tempB++) {
         let tempC = {
           name: userTemp[tempA].name,
+          userImg: userTemp[tempA].userImg,
           post: userTemp[tempA].post[tempB],
+          numOfPost: tempB.toString,
         };
         userArray.push(tempC);
-        //加入userName
       }
     }
     this.allUser = userArray;
