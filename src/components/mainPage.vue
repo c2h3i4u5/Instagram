@@ -9,6 +9,8 @@
       :userImg="user.userImg"
       :userMessage="user.post.message"
       :numOfPost="user.numOfPost"
+      :numOfComment="user.numOfComment"
+      :friendComment="user.friendComment"
     ></baseCard>
   </div>
 </template>
@@ -37,6 +39,7 @@ export default {
           name: getAllUserResult[num].userName,
           post: getAllUserResult[num].post,
           userImg: getAllUserResult[num].userImg,
+          friendComment: getAllUserResult[num].post.friendMessage,
         };
         userTemp.push(temp);
       }
@@ -46,13 +49,21 @@ export default {
     let userArray = [];
     for (let tempA = 0; tempA < userTemp.length; tempA++) {
       for (let tempB = 0; tempB < userTemp[tempA].post.length; tempB++) {
-        let tempC = {
-          name: userTemp[tempA].name,
-          userImg: userTemp[tempA].userImg,
-          post: userTemp[tempA].post[tempB],
-          numOfPost: tempB.toString,
-        };
-        userArray.push(tempC);
+        for (
+          let tempC = 0;
+          tempC < userTemp[tempA].post[tempB].friendMessage.length;
+          tempC++
+        ) {
+          let tempD = {
+            name: userTemp[tempA].name,
+            userImg: userTemp[tempA].userImg,
+            post: userTemp[tempA].post[tempB],
+            numOfPost: tempB.toString,
+            numOfComment: userTemp[tempA].post[tempB].friendMessage.length,
+            friendComment: userTemp[tempA].post[tempB].friendMessage,
+          };
+          userArray.push(tempD);
+        }
       }
     }
     this.allUser = userArray;

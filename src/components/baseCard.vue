@@ -38,12 +38,7 @@
           </p>
         </div>
         <div class="friendMessage">
-          <p>
-            <b>{{ this.$store.state.currentUserID }}</b>
-            test123123123test123123123
-          </p>
-          <p>
-            <b>{{ this.$store.state.currentUserID }}</b>
+          <p v-for="count in numOfComment" :key="count">
             test123123123test123123123
           </p>
         </div>
@@ -60,7 +55,15 @@
 
 <script>
 export default {
-  props: ["userID", "userPostImg", "userImg", "userMessage", "numOfPost"],
+  props: [
+    "userID",
+    "userPostImg",
+    "userImg",
+    "userMessage",
+    "numOfPost",
+    "numOfComment",
+    "friendComment",
+  ],
   data() {
     return {
       friendMessage: null,
@@ -69,7 +72,7 @@ export default {
   methods: {
     async inputMessage() {
       // await fetch(
-      //   `https://instagramlogin-278b1-default-rtdb.firebaseio.com/test05/post/${this.numOfPost}/friendMessage.json`,
+      //   `https://instagramlogin-278b1-default-rtdb.firebaseio.com/${this.userID}/post/${this.numOfPost}/friendMessage/2/.json`,
       //   {
       //     method: "PUT",
       //     body: JSON.stringify(this.friendMessage),
