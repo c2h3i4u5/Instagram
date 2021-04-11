@@ -62,6 +62,7 @@ export default {
           this.userInfo.account === user.phoneEmail
         ) {
           this.$store.commit("getUserInfo", user.userName); //get current user
+
           this.$router.replace("/homepage");
         }
         userAccount.push(user);

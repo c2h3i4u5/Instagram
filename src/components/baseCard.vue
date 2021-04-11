@@ -38,16 +38,18 @@
           </p>
         </div>
         <div class="friendMessage">
-          <p v-for="count in numOfComment" :key="count">
-            test123123123test123123123
+          <p
+            v-for="(count, index) in friendComment"
+            :key="index"
+            :currentFriendMessage="index"
+          >
+            <b> {{ count.user }} </b> {{ count.message }}
           </p>
         </div>
       </div>
       <div class="postComment">
-        <form @submit.prevent="inputMessage">
-          <input type="text" :value="friendMessage" />
-          <button>發佈</button>
-        </form>
+        <input type="text" v-model="this.leaveMessage" />
+        <button @click="inputMessage">發佈</button>
       </div>
     </div>
   </div>
@@ -63,23 +65,42 @@ export default {
     "numOfPost",
     "numOfComment",
     "friendComment",
+    "currentPost",
   ],
   data() {
     return {
-      friendMessage: null,
+      leaveMessage: null,
+      messageCount: null,
     };
+  },
+
+  created() {
+    // console.log(this.currentPost);
+    // console.log(this.$store.state.currentUserID);
   },
   methods: {
     async inputMessage() {
-      // await fetch(
-      //   `https://instagramlogin-278b1-default-rtdb.firebaseio.com/${this.userID}/post/${this.numOfPost}/friendMessage/2/.json`,
-      //   {
-      //     method: "PUT",
-      //     body: JSON.stringify(this.friendMessage),
-      //   }
-      // );
+      this.messageCount = this.numOfComment;
 
-      this.friendMessage = "";
+      await fetch(
+        `https://instagramlogin-278b1-default-rtdb.firebaseio.com/${this.userID}/post/${this.currentPost}/friendMessage/${this.messageCount}/message/.json`,
+        {
+          method: "PUT",
+          body: JSON.stringify(this.leaveMessage),
+        }
+      );
+
+      await fetch(
+        `https://instagramlogin-278b1-default-rtdb.firebaseio.com/${this.userID}/post/${this.currentPost}/friendMessage/${this.messageCount}/user/.json`,
+        {
+          method: "PUT",
+          body: JSON.stringify(this.$store.state.currentUserID),
+        }
+      );
+
+      // console.log(this.$store.state.currentUserID);
+
+      this.leaveMessage = "";
     },
   },
 };

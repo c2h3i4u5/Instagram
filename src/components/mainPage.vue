@@ -2,8 +2,8 @@
   <div>
     <the-header></the-header>
     <baseCard
-      v-for="user in allUser"
-      :key="user"
+      v-for="(user, index) in allUser"
+      :key="index"
       :userID="user.name"
       :userPostImg="user.post.image"
       :userImg="user.userImg"
@@ -11,6 +11,7 @@
       :numOfPost="user.numOfPost"
       :numOfComment="user.numOfComment"
       :friendComment="user.friendComment"
+      :currentPost="index"
     ></baseCard>
   </div>
 </template>
@@ -47,6 +48,7 @@ export default {
     this.allUser = userTemp;
 
     let userArray = [];
+    let tempD = null;
     for (let tempA = 0; tempA < userTemp.length; tempA++) {
       for (let tempB = 0; tempB < userTemp[tempA].post.length; tempB++) {
         for (
@@ -54,7 +56,7 @@ export default {
           tempC < userTemp[tempA].post[tempB].friendMessage.length;
           tempC++
         ) {
-          let tempD = {
+          tempD = {
             name: userTemp[tempA].name,
             userImg: userTemp[tempA].userImg,
             post: userTemp[tempA].post[tempB],
@@ -62,8 +64,9 @@ export default {
             numOfComment: userTemp[tempA].post[tempB].friendMessage.length,
             friendComment: userTemp[tempA].post[tempB].friendMessage,
           };
-          userArray.push(tempD);
+          // console.log(tempD.friendComment);
         }
+        userArray.push(tempD);
       }
     }
     this.allUser = userArray;
